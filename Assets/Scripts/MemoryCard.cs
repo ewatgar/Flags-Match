@@ -11,47 +11,54 @@ public class MemoryCard : MonoBehaviour
     private int _id;
     private Vector2 _size;
 
-    public bool IsCurrentlyFlipped {
-        get{ return _bIsCurrentlyFlipped; }
+    public bool IsCurrentlyFlipped
+    {
+        get { return _bIsCurrentlyFlipped; }
     }
 
-    public int Id {
-        get{ return _id; }
+    public int Id
+    {
+        get { return _id; }
     }
 
-    public Vector2 Size {
-        get{ return _size; }
+    public Vector2 Size
+    {
+        get { return _size; }
     }
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        
+
     }
 
-    public void Flip(){
+    public void Flip()
+    {
         CardBack.gameObject.SetActive(false);
         _bIsCurrentlyFlipped = true;
     }
 
-    public void Unflip(){
+    public void Unflip()
+    {
         CardBack.gameObject.SetActive(true);
         _bIsCurrentlyFlipped = false;
     }
 
-    void SetCard(int id, Sprite image){
+    void SetCard(int id, Sprite image)
+    {
         _id = id;
         CardFlag.sprite = image;
         _size = CardBack.sprite.bounds.size;
     }
 
-    void OnMouseDown(){
-        Debug.Log(IsCurrentlyFlipped);
-        if (!IsCurrentlyFlipped){
+    void OnMouseDown()
+    {
+        if (!IsCurrentlyFlipped)
+        {
             Flip();
         }
     }
