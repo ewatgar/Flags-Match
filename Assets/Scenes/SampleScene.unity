@@ -341,7 +341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3b884842fa38545983f2eb8f40b75a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardPrefab: {fileID: 3585084013322752288, guid: f3a6b38471123884dbaf0c30d35dc10d, type: 3}
+  cardPrefab: {fileID: 6671239697366905782, guid: f3a6b38471123884dbaf0c30d35dc10d, type: 3}
   images:
   - {fileID: 7829400875499196315, guid: 40345c34b109a5c4b9963858207d32b5, type: 3}
   - {fileID: -3082865341064151007, guid: 9f67deae57ecfcc48971934adfbf7762, type: 3}
@@ -349,6 +349,7 @@ MonoBehaviour:
   - {fileID: -6442041118641851461, guid: d9e0f214cecd56e43ada33c3262bfc6d, type: 3}
   - {fileID: 495865272442532948, guid: d99684ed6abbeb1429c3866d02b466bb, type: 3}
   - {fileID: -8254932462476682504, guid: 9f751b4ad9585db4d8baee507e5591d7, type: 3}
+  score: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
