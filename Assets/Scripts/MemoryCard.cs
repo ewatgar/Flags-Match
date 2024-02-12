@@ -57,9 +57,10 @@ public class MemoryCard : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!IsCurrentlyFlipped)
+        if (!IsCurrentlyFlipped && controller.CanFlip)
         {
             Flip();
+            controller.NotifyCardFlipped(this);
         }
     }
 }

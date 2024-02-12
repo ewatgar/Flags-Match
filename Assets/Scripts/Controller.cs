@@ -12,6 +12,16 @@ public class Controller : MonoBehaviour
     private float offsetX;
     private float y0;
     private float offsetY;
+    //----------------------
+    private MemoryCard firstCard = null;
+    private MemoryCard secondCard = null;
+    private bool _canFlip = true;
+    public int score = 0;
+
+    public bool CanFlip
+    {
+        get { return _canFlip; }
+    }
 
     void Start()
     {
@@ -60,8 +70,8 @@ public class Controller : MonoBehaviour
         {
             for (int j = 0; j < nCols; j++)
             {
-                float coordsX = x0 + offsetX*j;
-                float coordsY = y0 + offsetY*i;
+                float coordsX = x0 + offsetX * j;
+                float coordsY = y0 + offsetY * i;
                 CreateCard(currentCardIndex++, coordsX, coordsY);
             }
         }
@@ -110,6 +120,35 @@ public class Controller : MonoBehaviour
         float altoFila = altoCarta * nRows + gapY * (nRows - 1);
         y0 = -(altoFila - altoCarta) / 2;
         offsetY = altoCarta + gapY;
+    }
+
+    public void NotifyCardFlipped(MemoryCard card)
+    {
+        if (firstCard == null)
+        {
+            firstCard = card;
+        }
+        else
+        {
+            secondCard = card;
+            CheckCards();
+        }
+    }
+
+    IEnumerator CheckCards()
+    {
+        if (firstCard.Id == secondCard.Id)
+        {
+            score++;
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+            firstCard.Unflip();
+            secondCard.Unflip();
+            firstCard = null;
+            secondCard = null;
+        }
     }
 
     /*
