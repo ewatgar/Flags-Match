@@ -48,7 +48,7 @@ public class MemoryCard : MonoBehaviour
         _bIsCurrentlyFlipped = false;
     }
 
-    void SetCard(int id, Sprite image)
+    public void SetCard(int id, Sprite image)
     {
         _id = id;
         CardFlag.sprite = image;
