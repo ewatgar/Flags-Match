@@ -130,8 +130,8 @@ public class Controller : MonoBehaviour
         if (firstCard.Id == secondCard.Id)
         {
             score++;
-            StartCoroutine(firstCard.PairAnimation());
-            StartCoroutine(secondCard.PairAnimation());
+            StartCoroutine(firstCard.PairAnimationV3());
+            StartCoroutine(secondCard.PairAnimationV3());
         }
         else
         {
