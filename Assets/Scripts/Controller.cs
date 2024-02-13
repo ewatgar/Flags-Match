@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Controller : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Controller : MonoBehaviour
 
     void Start()
     {
+        StartTimer();
         RegisterCards();
         ShuffleCards();
         PlaceCards(3, 4);
@@ -144,6 +146,20 @@ public class Controller : MonoBehaviour
         }
         firstCard = null;
         secondCard = null;
+    }
+
+    public void StartTimer(){
+        StartCoroutine(CountTime());
+    }
+
+    IEnumerator CountTime(){
+        float totalTime = 0;
+        while(score < images.Length){
+            totalTime += Time.deltaTime;
+            yield return null;
+        }
+        Debug.Log("Has tardado " + totalTime + " segundos, ¡gracias por jugar!");
+        SceneManager.LoadScene("SampleScene");
     }
 
     /*
