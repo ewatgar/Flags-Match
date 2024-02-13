@@ -16,9 +16,7 @@ public class Controller : MonoBehaviour
     //----------------------
     private MemoryCard firstCard = null;
     private MemoryCard secondCard = null;
-    private bool _canFlip;
     public int score = 0;
-
     public bool CanFlip => firstCard == null || secondCard == null;
 
     void Start()
