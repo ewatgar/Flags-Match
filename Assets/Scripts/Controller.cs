@@ -39,9 +39,7 @@ public class Controller : MonoBehaviour
         int j = 0;
         for (int i = 0; i < length; i += 2)
         {
-            //Debug.Log("añadir en indice " + i + " numero " + j);
             cardIds[i] = j;
-            //Debug.Log("añadir doble: " + (i + 1) + " numero " + j);
             cardIds[i + 1] = j;
             j++;
         }
@@ -62,13 +60,6 @@ public class Controller : MonoBehaviour
 
         CalcOriginOffset(nCols, nRows, marginX, marginY);
 
-        /*
-        Debug.Log("size en controller: " + cardPrefab.Size);
-        Debug.Log("x0 " + x0);
-        Debug.Log("offsetX " + offsetX);
-        Debug.Log("y0 " + y0);
-        Debug.Log("offsetY " + offsetY);*/
-
         int currentIndex = 0;
         for (int i = 0; i < nRows; i++)
         {
@@ -77,9 +68,7 @@ public class Controller : MonoBehaviour
                 int cardId = shuffledCardsIds[currentIndex];
                 float coordsX = x0 + offsetX * j;
                 float coordsY = y0 + offsetY * i;
-                //Debug.Log("antes: "+currentCardIndex);
                 CreateCard(cardId, coordsX, coordsY);
-                //Debug.Log("despues: "+currentCardIndex);
                 currentIndex++;
             }
         }
@@ -134,10 +123,6 @@ public class Controller : MonoBehaviour
             secondCard = card;
             StartCoroutine(CheckCards());
         }
-        /*
-        Debug.Log("firstCard: "+firstCard.Id);
-        Debug.Log("secondCard: "+secondCard.Id);
-        Debug.Log("score: "+score);*/
     }
 
     IEnumerator CheckCards()
@@ -145,6 +130,8 @@ public class Controller : MonoBehaviour
         if (firstCard.Id == secondCard.Id)
         {
             score++;
+            StartCoroutine(firstCard.PairAnimation());
+            StartCoroutine(secondCard.PairAnimation());
         }
         else
         {

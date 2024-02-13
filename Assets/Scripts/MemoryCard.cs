@@ -10,6 +10,8 @@ public class MemoryCard : MonoBehaviour
     private bool _bIsCurrentlyFlipped = false;
     private int _id;
     private Vector2 _size;
+    public float animSpeed = 10;
+    public float animSeconds = 0.5f;
 
     public bool IsCurrentlyFlipped
     {
@@ -53,7 +55,6 @@ public class MemoryCard : MonoBehaviour
         _id = id;
         cardFlag.sprite = image;
         _size = cardBack.sprite.bounds.size;
-        //Debug.Log("Size memorycard: "+Size);
     }
 
     void OnMouseDown()
@@ -62,6 +63,15 @@ public class MemoryCard : MonoBehaviour
         {
             Flip();
             controller.NotifyCardFlipped(this);
+        }
+    }
+
+    public IEnumerator PairAnimation(){
+        float elapsedTime = 0f;
+        while(elapsedTime < animSeconds){
+            transform.Rotate(Vector3.forward*animSpeed*100*Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
     }
 }
