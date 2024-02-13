@@ -180,8 +180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eca91cb24b089a4f805ddec3ba8f757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CardBack: {fileID: 3973479861301987070}
-  CardFlag: {fileID: 7722299488153578000}
+  cardBack: {fileID: 3973479861301987070}
+  cardFlag: {fileID: 7104309951209745903}
   controller: {fileID: 0}
 --- !u!1 &7543260324754308159
 GameObject:

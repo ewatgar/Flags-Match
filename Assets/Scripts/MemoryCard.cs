@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MemoryCard : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer CardBack, CardFlag;
+    [SerializeField] SpriteRenderer cardBack, cardFlag;
     public Controller controller;
     private bool _bIsCurrentlyFlipped = false;
     private int _id;
@@ -38,21 +38,21 @@ public class MemoryCard : MonoBehaviour
 
     public void Flip()
     {
-        CardBack.gameObject.SetActive(false);
+        cardBack.gameObject.SetActive(false);
         _bIsCurrentlyFlipped = true;
     }
 
     public void Unflip()
     {
-        CardBack.gameObject.SetActive(true);
+        cardBack.gameObject.SetActive(true);
         _bIsCurrentlyFlipped = false;
     }
 
     public void SetCard(int id, Sprite image)
     {
         _id = id;
-        CardFlag.sprite = image;
-        _size = CardBack.sprite.bounds.size;
+        cardFlag.sprite = image;
+        _size = cardBack.sprite.bounds.size;
         Debug.Log("Size memorycard: "+Size);
     }
 
