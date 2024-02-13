@@ -15,13 +15,10 @@ public class Controller : MonoBehaviour
     //----------------------
     private MemoryCard firstCard = null;
     private MemoryCard secondCard = null;
-    private bool _canFlip = true;
+    private bool _canFlip;
     public int score = 0;
 
-    public bool CanFlip
-    {
-        get { return _canFlip; }
-    }
+    public bool CanFlip => firstCard == null || secondCard == null;
 
     void Start()
     {
@@ -65,11 +62,12 @@ public class Controller : MonoBehaviour
 
         CalcOriginOffset(nCols, nRows, marginX, marginY);
 
+        /*
         Debug.Log("size en controller: " + cardPrefab.Size);
         Debug.Log("x0 " + x0);
         Debug.Log("offsetX " + offsetX);
         Debug.Log("y0 " + y0);
-        Debug.Log("offsetY " + offsetY);
+        Debug.Log("offsetY " + offsetY);*/
 
         int currentIndex = 0;
         for (int i = 0; i < nRows; i++)
@@ -134,8 +132,12 @@ public class Controller : MonoBehaviour
         else
         {
             secondCard = card;
-            CheckCards();
+            StartCoroutine(CheckCards());
         }
+        /*
+        Debug.Log("firstCard: "+firstCard.Id);
+        Debug.Log("secondCard: "+secondCard.Id);
+        Debug.Log("score: "+score);*/
     }
 
     IEnumerator CheckCards()
@@ -149,9 +151,9 @@ public class Controller : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             firstCard.Unflip();
             secondCard.Unflip();
-            firstCard = null;
-            secondCard = null;
         }
+        firstCard = null;
+        secondCard = null;
     }
 
     /*
