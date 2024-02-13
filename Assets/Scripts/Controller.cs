@@ -42,9 +42,9 @@ public class Controller : MonoBehaviour
         int j = 0;
         for (int i = 0; i < length; i += 2)
         {
-            Debug.Log("añadir en indice " + i + " numero " + j);
+            //Debug.Log("añadir en indice " + i + " numero " + j);
             cardIds[i] = j;
-            Debug.Log("añadir doble: " + (i + 1) + " numero " + j);
+            //Debug.Log("añadir doble: " + (i + 1) + " numero " + j);
             cardIds[i + 1] = j;
             j++;
         }
@@ -64,6 +64,10 @@ public class Controller : MonoBehaviour
         }
         CalcX(nCols, marginX);
         CalcY(nRows, marginY);
+        Debug.Log("x0 "+x0);
+        Debug.Log("offsetX "+offsetX);
+        Debug.Log("y0 "+y0);
+        Debug.Log("offsetY "+offsetY);
 
         int currentCardIndex = 0;
         for (int i = 0; i < nRows; i++)
@@ -72,7 +76,12 @@ public class Controller : MonoBehaviour
             {
                 float coordsX = x0 + offsetX * j;
                 float coordsY = y0 + offsetY * i;
+                //Debug.Log("antes: "+currentCardIndex);
+                if (currentCardIndex==6){
+                    break;
+                }
                 CreateCard(currentCardIndex++, coordsX, coordsY);
+                //Debug.Log("despues: "+currentCardIndex);
             }
         }
 
@@ -81,7 +90,9 @@ public class Controller : MonoBehaviour
     private void CreateCard(int id, float coordsX, float coordsY)
     {
         MemoryCard card = Instantiate(cardPrefab);
+
         card.SetCard(id, images[id]);
+        
         card.controller = this;
         card.transform.position = new Vector3(
             coordsX,
@@ -94,6 +105,8 @@ public class Controller : MonoBehaviour
     {
         float anchoCamara = Camera.main.pixelWidth;
         float anchoCarta = cardPrefab.Size.x;
+        Debug.Log("anchoCamara "+anchoCamara);
+        Debug.Log("anchoCarta "+anchoCarta);
 
         float gapX = (anchoCamara - anchoCarta * nCols - marginX * 2) / (nCols - 1);
         if (gapX < 0)
@@ -110,6 +123,8 @@ public class Controller : MonoBehaviour
     {
         float altoCamara = Camera.main.pixelHeight;
         float altoCarta = cardPrefab.Size.y;
+        Debug.Log("altoCamara "+altoCamara);
+        Debug.Log("altoCarta "+altoCarta);
 
         float gapY = (altoCamara - altoCarta * nRows - marginY * 2) / (nRows - 1);
         if (gapY < 0)
@@ -117,8 +132,8 @@ public class Controller : MonoBehaviour
             gapY = 0;
         }
 
-        float altoFila = altoCarta * nRows + gapY * (nRows - 1);
-        y0 = -(altoFila - altoCarta) / 2;
+        float altoColumna = altoCarta * nRows + gapY * (nRows - 1);
+        y0 = (altoColumna - altoCarta) / 2;
         offsetY = altoCarta + gapY;
     }
 
