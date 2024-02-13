@@ -53,6 +53,7 @@ public class MemoryCard : MonoBehaviour
         _id = id;
         CardFlag.sprite = image;
         _size = CardBack.sprite.bounds.size;
+        Debug.Log("Size memorycard: "+Size);
     }
 
     void OnMouseDown()

@@ -64,6 +64,8 @@ public class Controller : MonoBehaviour
         }
         CalcX(nCols, marginX);
         CalcY(nRows, marginY);
+
+        Debug.Log("size en controller: "+cardPrefab.Size);
         Debug.Log("x0 "+x0);
         Debug.Log("offsetX "+offsetX);
         Debug.Log("y0 "+y0);
@@ -105,8 +107,6 @@ public class Controller : MonoBehaviour
     {
         float anchoCamara = Camera.main.pixelWidth;
         float anchoCarta = cardPrefab.Size.x;
-        Debug.Log("anchoCamara "+anchoCamara);
-        Debug.Log("anchoCarta "+anchoCarta);
 
         float gapX = (anchoCamara - anchoCarta * nCols - marginX * 2) / (nCols - 1);
         if (gapX < 0)
@@ -123,8 +123,6 @@ public class Controller : MonoBehaviour
     {
         float altoCamara = Camera.main.pixelHeight;
         float altoCarta = cardPrefab.Size.y;
-        Debug.Log("altoCamara "+altoCamara);
-        Debug.Log("altoCarta "+altoCarta);
 
         float gapY = (altoCamara - altoCarta * nRows - marginY * 2) / (nRows - 1);
         if (gapY < 0)
